@@ -1,0 +1,504 @@
+/**
+ * Provly Design System - Generated CSS Variables
+ * ==============================================================================
+ * Source File: provly-design-tokens.tokens.json
+ * Generated At: 2026-09-07T12:18:09.947Z
+ * 
+ * ARCHITECTURAL GUIDELINES & USAGE INSTRUCTIONS:
+ * ------------------------------------------------------------------------------
+ * 1. PRIMITIVE COLORS (Foundation Layer):
+ *    - Prefixed with `--primitive-color-` and `--provly-primitive-`.
+ *    - These are the foundational palette values (e.g. key colors, shade scales).
+ *    - DO NOT apply primitive color variables directly to UI components.
+ * 
+ * 2. COLOR ROLES (Semantic Layer):
+ *    - Prefixed with `--color-role-` and `--provly-role-`.
+ *    - These are functional semantic tokens (e.g. primary, on-primary, surface, container).
+ *    - ALWAYS use Color Roles in UI component styling (e.g., `color: var(--provly-role-on-primary);`).
+ *    - Color Roles automatically map to Primitive Colors via CSS `var(...)` references.
+ * 
+ * 3. SPACING & RADIUS:
+ *    - Prefixed with `--spacing-`, `--provly-spacing-`, and `--provly-radius-`.
+ *    - Use for margins, paddings, gap, and border-radius properties.
+ * 
+ * 4. TYPOGRAPHY & SHADOWS:
+ *    - Typography tokens provide both individual properties (-font-size, -line-height)
+ *      and composite font shorthands (`font: var(--typography-provly-body-medium);`).
+ *    - Shadow tokens provide drop-shadow values for `box-shadow`.
+ * ==============================================================================
+ */
+
+:root {
+  /* ==========================================================================
+     1. BASE PRIMITIVE COLORS (Foundation - Do NOT apply directly to UI)
+     ========================================================================== */
+  --primitive-color-key-colors-group-primary-key-color: #303ad0;
+  --primitive-color-key-colors-group-secondary-key-color: #5787f0;
+  --primitive-color-key-colors-group-tertiary-key-color: #191a66;
+  --primitive-color-key-colors-group-neutral-key-color: #16181d;
+  --primitive-color-key-colors-group-neutral-variant-key-color: #38393a;
+  --primitive-color-key-colors-group-error-key-color: #e10b0b;
+  --primitive-color-primary-color-palette-primary-0: #000000;
+  --primitive-color-primary-color-palette-primary-10: #090c2a;
+  --primitive-color-primary-color-palette-primary-20: #131753;
+  --primitive-color-primary-color-palette-primary-30: #1c237d;
+  --primitive-color-primary-color-palette-primary-40: #262ea6;
+  --primitive-color-primary-color-palette-primary-50: #303ad0;
+  --primitive-color-primary-color-palette-primary-60: #5961d9;
+  --primitive-color-primary-color-palette-primary-70: #8289e3;
+  --primitive-color-primary-color-palette-primary-80: #acb0ec;
+  --primitive-color-primary-color-palette-primary-90: #d5d8f6;
+  --primitive-color-primary-color-palette-primary-95: #eaebfa;
+  --primitive-color-primary-color-palette-primary-98: #f7f7fd;
+  --primitive-color-primary-color-palette-primary-99: #fbfbfe;
+  --primitive-color-primary-color-palette-primary-100: #ffffff;
+  --primitive-color-secondary-color-palette-secondary0: #000000;
+  --primitive-color-secondary-color-palette-secondary10: #04122f;
+  --primitive-color-secondary-color-palette-secondary20: #04122f;
+  --primitive-color-secondary-color-palette-secondary30: #0d358c;
+  --primitive-color-secondary-color-palette-secondary40: #1146bb;
+  --primitive-color-secondary-color-palette-secondary50: #1558ea;
+  --primitive-color-secondary-color-palette-secondary60: #4479ee;
+  --primitive-color-secondary-color-palette-secondary70: #739bf2;
+  --primitive-color-secondary-color-palette-secondary80: #a1bcf7;
+  --primitive-color-secondary-color-palette-secondary90: #d0defb;
+  --primitive-color-secondary-color-palette-secondary95: #e8eefd;
+  --primitive-color-secondary-color-palette-secondary98: #f6f8fe;
+  --primitive-color-secondary-color-palette-secondary99: #fcfcfc;
+  --primitive-color-secondary-color-palette-secondary100: #ffffff;
+  --primitive-color-tertiary-color-palette-tertiary-0: #000000;
+  --primitive-color-tertiary-color-palette-tertiary-10: #0a0b29;
+  --primitive-color-tertiary-color-palette-tertiary-20: #141552;
+  --primitive-color-tertiary-color-palette-tertiary-30: #1e207b;
+  --primitive-color-tertiary-color-palette-tertiary-40: #282aa4;
+  --primitive-color-tertiary-color-palette-tertiary-50: #3235cd;
+  --primitive-color-tertiary-color-palette-tertiary-60: #5b5dd7;
+  --primitive-color-tertiary-color-palette-tertiary-70: #8486e1;
+  --primitive-color-tertiary-color-palette-tertiary-80: #adaeeb;
+  --primitive-color-tertiary-color-palette-tertiary-90: #d6d7f5;
+  --primitive-color-tertiary-color-palette-tertiary-95: #ebebfa;
+  --primitive-color-tertiary-color-palette-tertiary-98: #f7f7fd;
+  --primitive-color-tertiary-color-palette-tertiary-99: #fbfbfe;
+  --primitive-color-tertiary-color-palette-tertiary-100: #ffffff;
+  --primitive-color-neutral-color-palette-neutral0: #000000;
+  --primitive-color-neutral-color-palette-neutral10: #16181d;
+  --primitive-color-neutral-color-palette-neutral20: #2c303a;
+  --primitive-color-neutral-color-palette-neutral30: #424857;
+  --primitive-color-neutral-color-palette-neutral40: #586074;
+  --primitive-color-neutral-color-palette-neutral50: #6e7891;
+  --primitive-color-neutral-color-palette-neutral60: #8b93a7;
+  --primitive-color-neutral-color-palette-neutral70: #a8aebd;
+  --primitive-color-neutral-color-palette-neutral80: #c5c9d3;
+  --primitive-color-neutral-color-palette-neutral90: #e2e4e9;
+  --primitive-color-neutral-color-palette-neutral95: #f0f1f4;
+  --primitive-color-neutral-color-palette-neutral98: #f9fafb;
+  --primitive-color-neutral-color-palette-neutral99: #fcfcfd;
+  --primitive-color-neutral-color-palette-neutral100: #ffffff;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant0: #000000;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant10: #19191a;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant20: #323334;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant30: #4b4c4e;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant40: #646668;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant50: #7d8082;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant60: #97999b;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant70: #b1b2b4;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant80: #cbcccd;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant92: #eaebeb;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant95: #f2f2f2;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant98: #fafafa;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant99: #fcfcfc;
+  --primitive-color-neutral-variant-color-palette-neutral-vabriant100: #ffffff;
+  --primitive-color-error-color-palette-error0: #ffffff;
+  --primitive-color-error-color-palette-error10: #310202;
+  --primitive-color-error-color-palette-error20: #610505;
+  --primitive-color-error-color-palette-error30: #920707;
+  --primitive-color-error-color-palette-error40: #c30909;
+  --primitive-color-error-color-palette-error50: #f40b0b;
+  --primitive-color-error-color-palette-error60: #f63c3c;
+  --primitive-color-error-color-palette-error70: #f86d6d;
+  --primitive-color-error-color-palette-error82: #e9e9e9;
+  --primitive-color-error-color-palette-error92: #fdd8d8;
+  --primitive-color-error-color-palette-error95: #fee7e7;
+  --primitive-color-error-color-palette-error98: #fff5f5;
+  --primitive-color-error-color-palette-error99: #fffafa;
+  --primitive-color-error-color-palette-error100: #ffffff;
+
+  /* ==========================================================================
+     2. PROVLY BRAND PRIMITIVE COLORS (Foundation - Do NOT apply directly to UI)
+     ========================================================================== */
+  --provly-primitive-provly-key-colors-group-provly-primary-key-color: #1f4b43;
+  --provly-primitive-provly-key-colors-group-provly-secondary-key-color: #1b263b;
+  --provly-primitive-provly-key-colors-group-provly-accent-tertiary-key-color: #7d5a8c;
+  --provly-primitive-provly-key-colors-group-provly-neutral-supporting-key-color: #ffffff;
+  --provly-primitive-provly-key-colors-group-provly-semantic-success-key-color: #22c55e;
+  --provly-primitive-provly-key-colors-group-provly-semantic-warning-color: #f59e0b;
+  --provly-primitive-provly-key-colors-group-provly-error-key-color: #ef4444;
+  --provly-primitive-provly-key-colors-group-provly-info-key-color: #3b82f6;
+  --provly-primitive-provly-key-colors-group-provly-neutral-key-color: #94a3b8;
+  --provly-primitive-provly-key-colors-group-provly-neutral-variant-key-color: #64748b;
+  --provly-primitive-provly-primary-color-palette-provly-primary0: #000000;
+  --provly-primitive-provly-primary-color-palette-provly-primary10: #0f2420;
+  --provly-primitive-provly-primary-color-palette-provly-primary20: #1e4840;
+  --provly-primitive-provly-primary-color-palette-provly-primary30: #2d6c61;
+  --provly-primitive-provly-primary-color-palette-provly-primary40: #3c9081;
+  --provly-primitive-provly-primary-color-palette-provly-primary50: #4bb4a1;
+  --provly-primitive-provly-primary-color-palette-provly-primary60: #6fc3b4;
+  --provly-primitive-provly-primary-color-palette-provly-primary70: #93d2c7;
+  --provly-primitive-provly-primary-color-palette-provly-primary80: #b7e1d9;
+  --provly-primitive-provly-primary-color-palette-provly-primary90: #dbf0ec;
+  --provly-primitive-provly-primary-color-palette-provly-primary92: #e2f3f0;
+  --provly-primitive-provly-primary-color-palette-provly-primary95: #edf8f6;
+  --provly-primitive-provly-primary-color-palette-provly-primary98: #f8fcfb;
+  --provly-primitive-provly-primary-color-palette-provly-primary100: #ffffff;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary0: #000000;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary10: #101723;
+  --provly-primitive-provly-secondary-color-palette-provly-seconday20: #202d46;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary30: #304469;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary40: #405a8c;
+  --provly-primitive-provly-secondary-color-palette-provly-seconday50: #5071af;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary60: #a2b2d0;
+  --provly-primitive-provly-secondary-color-palette-provly-seconday70: #96aacf;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary-80: #c3cde1;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary-90: #dce3ef;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary92: #e3e8f2;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary95: #edf1f7;
+  --provly-primitive-provly-secondary-color-palette-provly-seconday98: #f8f9fc;
+  --provly-primitive-provly-secondary-color-palette-provly-secondary100: #ffffff;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary0: #000000;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary10: #1c141f;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary20: #37283e;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary30: #533c5d;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary40: #6f507c;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary50: #8b649b;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary60: #a283af;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary70: #b9a2c3;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary80: #d0c1d7;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary90: #e8e0eb;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary95: #f3eff5;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary98: #faf9fb;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary99: #fdfcfd;
+  --provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary100: #ffffff;
+  --provly-primitive-provly-neutral0: #000000;
+  --provly-primitive-provly-neutral10: #191919;
+  --provly-primitive-provly-neutral20: #333333;
+  --provly-primitive-provly-neutral30: #4c4c4c;
+  --provly-primitive-provly-neutral40: #666666;
+  --provly-primitive-provly-neutral50: #808080;
+  --provly-primitive-provly-neutral60: #999999;
+  --provly-primitive-provly-neutral70: #b3b3b3;
+  --provly-primitive-provly-neutral80: #cccccc;
+  --provly-primitive-provly-neutral90: #e6e6e6;
+  --provly-primitive-provly-neutral95: #f2f2f2;
+  --provly-primitive-provly-neutral98: #fafafa;
+  --provly-primitive-provly-neutral99: #fcfcfc;
+  --provly-primitive-provly-neutral100: #ffffff;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color0: #000000;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color10: #082b15;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color20: #0f572a;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color30: #17823e;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color40: #1eae53;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color50: #26d968;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color60: #51e186;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color70: #7de8a4;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color80: #a8f0c3;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color90: #d4f7e1;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color95: #e9fbf0;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color98: #f6fdf9;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color99: #fbfefc;
+  --provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color100: #ffffff;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color0: #000000;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color10: #312002;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color20: #623f04;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color30: #935f06;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color40: #c47e08;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color50: #f59e0b;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color60: #f7b13b;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color70: #f9c56c;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color80: #fbd89d;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color90: #fdecce;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color95: #fef5e7;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color98: #fffbf5;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color99: #fffdfa;
+  --provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color100: #ffffff;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color0: #000000;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color10: #2f0404;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-60: #ef4444;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-70: #f37272;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-80: #f7a1a1;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-90: #fbd0d0;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-95: #fde8e8;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-98: #fef6f6;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-99: #fffafa;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-100: #ffffff;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-20: #5e0808;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-30: #8d0c0c;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-40: #bc1010;
+  --provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-50: #eb1414;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette0: #000000;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette-2: #021431;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette20: #042862;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette30: #073c92;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette40: #0950c3;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette50: #0b64f4;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette60: #3c83f6;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette70: #6da2f8;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette80: #9dc1fb;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette90: #cee0fd;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette95: #f0f2f5;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette98: #f9fafb;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette99: #fafcff;
+  --provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette100: #ffffff;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette0: #000000;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette10: #14191f;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette20: #29313d;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette30: #3d4a5c;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette40: #51637b;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette50: #667b99;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette60: #8496ae;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette70: #a3b0c2;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette80: #c2cad6;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette90: #e0e5eb;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette95: #f0f2f5;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette98: #f9fafb;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette99: #fcfcfd;
+  --provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette100: #ffffff;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette0: #000000;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette10: #15191e;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette20: #2b323b;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette30: #404a59;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette40: #556377;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette50: #6b7c94;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette60: #8896aa;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette70: #a6b0bf;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette80: #c4cbd4;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette90: #e1e5ea;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette95: #f0f2f4;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette98: #f9fafb;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette99: #fcfcfd;
+  --provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette100: #ffffff;
+
+  /* ==========================================================================
+     3. BASE SEMANTIC COLOR ROLES (UI Implementation Layer)
+     ========================================================================== */
+  --color-role-primary: var(--primitive-color-key-colors-group-primary-key-color);
+  --color-role-on-primary: var(--primitive-color-primary-color-palette-primary-100);
+  --color-role-primary-container: var(--primitive-color-primary-color-palette-primary-90);
+  --color-role-on-primary-container: var(--primitive-color-primary-color-palette-primary-30);
+  --color-role-secondary: var(--primitive-color-secondary-color-palette-secondary40);
+  --color-role-on-secondary: var(--primitive-color-secondary-color-palette-secondary100);
+  --color-role-secondary-container: var(--primitive-color-secondary-color-palette-secondary90);
+  --color-role-on-secondary-container: var(--primitive-color-secondary-color-palette-secondary30);
+  --color-role-tertiary: var(--primitive-color-tertiary-color-palette-tertiary-40);
+  --color-role-on-tertiary: var(--primitive-color-tertiary-color-palette-tertiary-100);
+  --color-role-tertiary-container: var(--primitive-color-tertiary-color-palette-tertiary-90);
+  --color-role-on-tertiary-container: var(--primitive-color-tertiary-color-palette-tertiary-30);
+  --color-role-surface: var(--primitive-color-neutral-color-palette-neutral98);
+  --color-role-on-surface: var(--primitive-color-neutral-color-palette-neutral10);
+  --color-role-surface-variant: var(--primitive-color-neutral-variant-color-palette-neutral-vabriant92);
+  --color-role-on-surface-variant: var(--primitive-color-neutral-variant-color-palette-neutral-vabriant30);
+
+  /* ==========================================================================
+     4. PROVLY SEMANTIC COLOR ROLES (UI Implementation Layer)
+     ========================================================================== */
+  --provly-role-provly-primary: var(--provly-primitive-provly-key-colors-group-provly-primary-key-color);
+  --provly-role-provly-on-primary: var(--provly-primitive-provly-primary-color-palette-provly-primary100);
+  --provly-role-provly-primary-container: var(--provly-primitive-provly-primary-color-palette-provly-primary90);
+  --provly-role-provly-on-primary-container: var(--provly-primitive-provly-primary-color-palette-provly-primary30);
+  --provly-role-provly-secondary: var(--provly-primitive-provly-secondary-color-palette-provly-secondary40);
+  --provly-role-provly-on-secondary: var(--provly-primitive-provly-secondary-color-palette-provly-secondary100);
+  --provly-role-provly-secondary-container: var(--provly-primitive-provly-secondary-color-palette-provly-secondary-90);
+  --provly-role-provly-on-secondary-container: var(--provly-primitive-provly-secondary-color-palette-provly-secondary30);
+  --provly-role-provly-accent-tertiary: var(--provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary40);
+  --provly-role-provly-accent-on-tertiary: var(--provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary100);
+  --provly-role-provly-accent-tertiary-container: var(--provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary90);
+  --provly-role-provly-accent-on-tertiary-container: var(--provly-primitive-provly-accent-tertiary-color-palette-provly-accent-tertiary30);
+  --provly-role-provly-success: var(--provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color40);
+  --provly-role-provly-on-success: var(--provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color100);
+  --provly-role-provly-success-container: var(--provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color90);
+  --provly-role-provly-on-success-container: var(--provly-primitive-provly-semantic-success-color-palette-provly-semantic-success-color30);
+  --provly-role-provly-warning: var(--provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color40);
+  --provly-role-provly-on-warning: var(--provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color0);
+  --provly-role-provly-warning-container: var(--provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color90);
+  --provly-role-provly-on-warning-container: var(--provly-primitive-provly-semantic-warning-color-palette-provly-semantic-warning-color30);
+  --provly-role-provly-error: var(--provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-40);
+  --provly-role-provly-on-error: var(--provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-100);
+  --provly-role-provly-error-container: var(--provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-90);
+  --provly-role-provly-on-error-container: var(--provly-primitive-provly-semantic-error-color-palette-provly-semantic-error-color-30);
+  --provly-role-provly-info: var(--provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette40);
+  --provly-role-provly-on-info: var(--provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette100);
+  --provly-role-provly-info-container: var(--provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette90);
+  --provly-role-provly-on-info-container: var(--provly-primitive-provly-semantic-info-color-pallete-provly-semantic-info-color-palette30);
+  --provly-role-provly-neutral: var(--provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette30);
+  --provly-role-provly-on-neutral: var(--provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette100);
+  --provly-role-provly-neutral-container: var(--provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette90);
+  --provly-role-provly-on-neutral-container: var(--provly-primitive-provly-neutral-1-color-palette-provly-neutral-1-color-palette30);
+  --provly-role-provly-neutral-variant: var(--provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette40);
+  --provly-role-provly-on-neutral-variant: var(--provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette100);
+  --provly-role-provly-neutral-variant-container: var(--provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette90);
+  --provly-role-provly-on-neutral-variant-copntainer: var(--provly-primitive-provly-neutral-variant-color-palette-provly-neutral-variant-color-palette30);
+
+  /* ==========================================================================
+     5. SPACING COLLECTIONS
+     ========================================================================== */
+  --spacing-no-spacing: 0;
+  --spacing-extra-small-spacing: 4px;
+  --spacing-small-spacing: 8px;
+  --spacing-medium-spacing: 12px;
+  --spacing-base-spacing: 16px;
+  --spacing-large-spacing: 20px;
+  --spacing-extra-large-spacing: 24px;
+  --spacing-very-large-spacing: 32px;
+
+  --provly-spacing-provly-no-spacing: 0;
+  --provly-spacing-provly-extra-small-spacing: 4px;
+  --provly-spacing-provly-small-spacing: 8px;
+  --provly-spacing-provly-medium-nspacing: 12px;
+  --provly-spacing-provly-base-spacing: 16px;
+  --provly-spacing-provly-large-spacing: 24px;
+  --provly-spacing-provly-extra-large-spacing: 32px;
+  --provly-spacing-provly-2x-large: 40px;
+  --provly-spacing-provly-3x-large: 48px;
+  --provly-spacing-provly-4-large-spacing: 64px;
+
+  /* ==========================================================================
+     6. BORDER RADIUS
+     ========================================================================== */
+  --provly-radius-provly-small: 4px;
+  --provly-radius-provly-medium: 8px;
+  --provly-radius-provly-large: 12px;
+  --provly-radius-provly-extra-large: 16px;
+  --provly-radius-provly-full-pill: 999px;
+
+  /* ==========================================================================
+     7. EFFECTS & DROP SHADOWS
+     ========================================================================== */
+  --effect-hard-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.25);
+  --effect-medium-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.25), 2px 2px 16px 0 rgba(0, 0, 0, 0.28);
+  --effect-soft-shadow: 2px 2px 20px 0 rgba(0, 0, 0, 0.12);
+  --effect-provly-hard-shadow: 2px 6px 20px 0 rgba(0, 0, 0, 0.16);
+  --effect-provly-medium-shadow: 1px 4px 16px 0 rgba(0, 0, 0, 0.12);
+  --effect-provly-soft-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.08);
+
+  /* ==========================================================================
+     8. TYPOGRAPHY STYLES
+     ========================================================================== */
+  --typography-provly-display-large-font-size: 60px;
+  --typography-provly-display-large-line-height: 90px;
+  --typography-provly-display-large-font-family: 'Space Grotesk', sans-serif;
+  --typography-provly-display-large-font-weight: 500;
+  --typography-provly-display-large-font-style: normal;
+  --typography-provly-display-large-letter-spacing: -3px;
+  --typography-provly-display-large: normal 500 60px/90px 'Space Grotesk', sans-serif;
+  --typography-provly-display-medium-font-size: 50px;
+  --typography-provly-display-medium-line-height: 75px;
+  --typography-provly-display-medium-font-family: 'Space Grotesk', sans-serif;
+  --typography-provly-display-medium-font-weight: 500;
+  --typography-provly-display-medium-font-style: normal;
+  --typography-provly-display-medium-letter-spacing: -2px;
+  --typography-provly-display-medium: normal 500 50px/75px 'Space Grotesk', sans-serif;
+  --typography-provly-display-small-font-size: 40px;
+  --typography-provly-display-small-line-height: 60px;
+  --typography-provly-display-small-font-family: 'Space Grotesk', sans-serif;
+  --typography-provly-display-small-font-weight: 500;
+  --typography-provly-display-small-font-style: normal;
+  --typography-provly-display-small-letter-spacing: -1.75px;
+  --typography-provly-display-small: normal 500 40px/60px 'Space Grotesk', sans-serif;
+  --typography-provly-headline-large-font-size: 32px;
+  --typography-provly-headline-large-line-height: 48px;
+  --typography-provly-headline-large-font-family: 'Inter', sans-serif;
+  --typography-provly-headline-large-font-weight: 500;
+  --typography-provly-headline-large-font-style: normal;
+  --typography-provly-headline-large-letter-spacing: -1.5px;
+  --typography-provly-headline-large: normal 500 32px/48px 'Inter', sans-serif;
+  --typography-provly-headline-medium-font-size: 28px;
+  --typography-provly-headline-medium-line-height: 42px;
+  --typography-provly-headline-medium-font-family: 'Inter', sans-serif;
+  --typography-provly-headline-medium-font-weight: 500;
+  --typography-provly-headline-medium-font-style: normal;
+  --typography-provly-headline-medium-letter-spacing: -1.5px;
+  --typography-provly-headline-medium: normal 500 28px/42px 'Inter', sans-serif;
+  --typography-provly-headline-small-font-size: 24px;
+  --typography-provly-headline-small-line-height: 36px;
+  --typography-provly-headline-small-font-family: 'Inter', sans-serif;
+  --typography-provly-headline-small-font-weight: 500;
+  --typography-provly-headline-small-font-style: normal;
+  --typography-provly-headline-small-letter-spacing: -1px;
+  --typography-provly-headline-small: normal 500 24px/36px 'Inter', sans-serif;
+  --typography-provly-title-large-font-size: 32px;
+  --typography-provly-title-large-line-height: 48px;
+  --typography-provly-title-large-font-family: 'Space Grotesk', sans-serif;
+  --typography-provly-title-large-font-weight: 700;
+  --typography-provly-title-large-font-style: normal;
+  --typography-provly-title-large-letter-spacing: 0.85px;
+  --typography-provly-title-large: normal 700 32px/48px 'Space Grotesk', sans-serif;
+  --typography-provly-title-medium-font-size: 22px;
+  --typography-provly-title-medium-line-height: 33px;
+  --typography-provly-title-medium-font-family: 'Space Grotesk', sans-serif;
+  --typography-provly-title-medium-font-weight: 700;
+  --typography-provly-title-medium-font-style: normal;
+  --typography-provly-title-medium-letter-spacing: -1px;
+  --typography-provly-title-medium: normal 700 22px/33px 'Space Grotesk', sans-serif;
+  --typography-provly-title-small-font-size: 20px;
+  --typography-provly-title-small-line-height: 30px;
+  --typography-provly-title-small-font-family: 'Space Grotesk', sans-serif;
+  --typography-provly-title-small-font-weight: 500;
+  --typography-provly-title-small-font-style: normal;
+  --typography-provly-title-small-letter-spacing: -1px;
+  --typography-provly-title-small: normal 500 20px/30px 'Space Grotesk', sans-serif;
+  --typography-provly-body-large-font-size: 18px;
+  --typography-provly-body-large-line-height: 27px;
+  --typography-provly-body-large-font-family: 'Inter', sans-serif;
+  --typography-provly-body-large-font-weight: 400;
+  --typography-provly-body-large-font-style: normal;
+  --typography-provly-body-large-letter-spacing: -1px;
+  --typography-provly-body-large: normal 400 18px/27px 'Inter', sans-serif;
+  --typography-provly-body-medium-font-size: 16px;
+  --typography-provly-body-medium-line-height: 24px;
+  --typography-provly-body-medium-font-family: 'Inter', sans-serif;
+  --typography-provly-body-medium-font-weight: 400;
+  --typography-provly-body-medium-font-style: normal;
+  --typography-provly-body-medium-letter-spacing: -1px;
+  --typography-provly-body-medium: normal 400 16px/24px 'Inter', sans-serif;
+  --typography-provly-body-small-font-size: 14px;
+  --typography-provly-body-small-line-height: 21px;
+  --typography-provly-body-small-font-family: 'Inter', sans-serif;
+  --typography-provly-body-small-font-weight: 400;
+  --typography-provly-body-small-font-style: normal;
+  --typography-provly-body-small-letter-spacing: -1px;
+  --typography-provly-body-small: normal 400 14px/21px 'Inter', sans-serif;
+  --typography-provly-label-large-font-size: 14px;
+  --typography-provly-label-large-line-height: 21px;
+  --typography-provly-label-large-font-family: 'Inter', sans-serif;
+  --typography-provly-label-large-font-weight: 500;
+  --typography-provly-label-large-font-style: normal;
+  --typography-provly-label-large-letter-spacing: -1px;
+  --typography-provly-label-large: normal 500 14px/21px 'Inter', sans-serif;
+  --typography-provly-label-medium-font-size: 12px;
+  --typography-provly-label-medium-line-height: 18px;
+  --typography-provly-label-medium-font-family: 'Inter', sans-serif;
+  --typography-provly-label-medium-font-weight: 500;
+  --typography-provly-label-medium-font-style: normal;
+  --typography-provly-label-medium-letter-spacing: -1px;
+  --typography-provly-label-medium: normal 500 12px/18px 'Inter', sans-serif;
+  --typography-provly-label-small-font-size: 11px;
+  --typography-provly-label-small-line-height: 16.5px;
+  --typography-provly-label-small-font-family: 'Inter', sans-serif;
+  --typography-provly-label-small-font-weight: 500;
+  --typography-provly-label-small-font-style: normal;
+  --typography-provly-label-small-letter-spacing: -1px;
+  --typography-provly-label-small: normal 500 11px/16.5px 'Inter', sans-serif;
+  --typography-fn-display-large-font-size: 57px;
+  --typography-fn-display-large-line-height: 85.5px;
+  --typography-fn-display-large-font-family: 'Inter', sans-serif;
+  --typography-fn-display-large-font-weight: 500;
+  --typography-fn-display-large-font-style: normal;
+  --typography-fn-display-large-letter-spacing: 0;
+  --typography-fn-display-large: normal 500 57px/85.5px 'Inter', sans-serif;
+  --typography-fn-fn-display-large-font-size: 57px;
+  --typography-fn-fn-display-large-line-height: 85.5px;
+  --typography-fn-fn-display-large-font-family: 'Inter', sans-serif;
+  --typography-fn-fn-display-large-font-weight: 500;
+  --typography-fn-fn-display-large-font-style: normal;
+  --typography-fn-fn-display-large-letter-spacing: 0;
+  --typography-fn-fn-display-large: normal 500 57px/85.5px 'Inter', sans-serif;
+}

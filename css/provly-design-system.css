@@ -1,0 +1,542 @@
+/**
+ * Provly Design System - Component & Application Stylesheet
+ * ==============================================================================
+ * This stylesheet imports the Provly design tokens locally and defines the
+ * UI component and shell styles for the subscription and billing slice.
+ *
+ * MANDATORY DESIGN TOKEN RULES (AGENTS.md):
+ *   1. Components reference ROLE TOKENS ONLY (--provly-role-provly-*).
+ *      Primitive tokens (--provly-primitive-*) MUST NEVER appear in component rules.
+ *   2. Never reference generic, non-provly prefixed tokens (--role-primary, etc.).
+ *      Only --provly-* collections are valid.
+ *   3. Spacing, radius, typography, and shadows must use --provly-spacing-provly-*,
+ *      --provly-radius-provly-*, --typography-provly-*, and --effect-provly-*.
+ * ==============================================================================
+ */
+
+@import './provly-tokens.css';
+
+/* --------------------------------------------------------------------------
+   Global Reset & Defaults
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: var(--provly-role-provly-neutral-container);
+  color: var(--provly-role-provly-on-neutral-container);
+  font: var(--typography-provly-body-medium);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   Minimal Signed-In Application Shell
+   -------------------------------------------------------------------------- */
+.provly-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--provly-role-provly-neutral-container);
+}
+
+.provly-shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--provly-spacing-provly-base-spacing) var(--provly-spacing-provly-extra-large-spacing);
+  background: var(--provly-role-provly-neutral);
+  color: var(--provly-role-provly-on-neutral);
+  border-bottom: 1px solid var(--provly-role-provly-on-neutral-container);
+  box-shadow: var(--effect-provly-soft-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.provly-shell__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--provly-spacing-provly-small-spacing);
+  font: var(--typography-provly-title-medium);
+  color: var(--provly-role-provly-on-neutral);
+  text-decoration: none;
+}
+
+.provly-shell__brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--provly-radius-provly-medium);
+  background: var(--provly-role-provly-primary);
+  color: var(--provly-role-provly-on-primary);
+  font: var(--typography-provly-title-small);
+  font-weight: 700;
+}
+
+.provly-shell__main {
+  flex: 1;
+  padding: var(--provly-spacing-provly-extra-large-spacing) var(--provly-spacing-provly-base-spacing);
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header navigation */
+.provly-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--provly-spacing-provly-small-spacing);
+  background: var(--provly-role-provly-neutral-container);
+  padding: var(--provly-spacing-provly-extra-small-spacing);
+  border-radius: var(--provly-radius-provly-medium);
+  border: 1px solid var(--provly-role-provly-on-neutral-container);
+}
+
+.provly-nav__link {
+  color: var(--provly-role-provly-on-neutral-container);
+  text-decoration: none;
+  font: var(--typography-provly-label-large);
+  padding: var(--provly-spacing-provly-extra-small-spacing) var(--provly-spacing-provly-base-spacing);
+  border-radius: var(--provly-radius-provly-small);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.provly-nav__link:hover {
+  background: var(--provly-role-provly-neutral-variant-container);
+  color: var(--provly-role-provly-on-neutral-variant-container);
+}
+
+.provly-nav__link--active {
+  background: var(--provly-role-provly-primary);
+  color: var(--provly-role-provly-on-primary);
+}
+.provly-nav__link--active:hover {
+  background: var(--provly-role-provly-primary);
+  color: var(--provly-role-provly-on-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Typography & Header Elements
+   -------------------------------------------------------------------------- */
+.provly-page-header {
+  margin-bottom: var(--provly-spacing-provly-extra-large-spacing);
+}
+
+.provly-heading {
+  font: var(--typography-provly-headline-large);
+  color: var(--provly-role-provly-on-neutral-container);
+  margin-bottom: var(--provly-spacing-provly-small-spacing);
+  letter-spacing: -0.02em;
+}
+
+.provly-subheading {
+  font: var(--typography-provly-title-small);
+  color: var(--provly-role-provly-on-neutral-container);
+  margin-bottom: var(--provly-spacing-provly-base-spacing);
+}
+
+.provly-text {
+  font: var(--typography-provly-body-medium);
+  color: var(--provly-role-provly-on-neutral-container);
+  line-height: 1.5;
+}
+
+.provly-text--muted {
+  color: var(--provly-role-provly-on-neutral-container);
+  opacity: 0.75;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & Interactive Elements
+   -------------------------------------------------------------------------- */
+.provly-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--provly-spacing-provly-small-spacing);
+  font: var(--typography-provly-label-large);
+  padding: var(--provly-spacing-provly-medium-nspacing) var(--provly-spacing-provly-large-spacing);
+  border-radius: var(--provly-radius-provly-medium);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+
+.provly-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.provly-btn--primary {
+  background: var(--provly-role-provly-primary);
+  color: var(--provly-role-provly-on-primary);
+  box-shadow: var(--effect-provly-soft-shadow);
+}
+.provly-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: var(--effect-provly-medium-shadow);
+}
+
+.provly-btn--secondary {
+  background: var(--provly-role-provly-neutral);
+  color: var(--provly-role-provly-on-neutral);
+  border-color: var(--provly-role-provly-on-neutral-container);
+}
+.provly-btn--secondary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.provly-btn--danger {
+  background: var(--provly-role-provly-error);
+  color: var(--provly-role-provly-on-error);
+  box-shadow: var(--effect-provly-soft-shadow);
+}
+.provly-btn--danger:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.provly-btn--disabled,
+.provly-btn:disabled {
+  background: var(--provly-role-provly-neutral);
+  color: var(--provly-role-provly-on-neutral);
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.provly-btn:focus-visible {
+  outline: 2px solid var(--provly-role-provly-primary);
+  outline-offset: 2px;
+}
+
+/* Sign out link */
+.provly-signout {
+  color: var(--provly-role-provly-on-neutral);
+  font: var(--typography-provly-label-large);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.85;
+  padding: var(--provly-spacing-provly-extra-small-spacing) var(--provly-spacing-provly-small-spacing);
+  border-radius: var(--provly-radius-provly-small);
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+.provly-signout:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Badges & Status Indicators
+   -------------------------------------------------------------------------- */
+.provly-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--provly-spacing-provly-extra-small-spacing);
+  font: var(--typography-provly-label-medium);
+  padding: var(--provly-spacing-provly-extra-small-spacing) var(--provly-spacing-provly-small-spacing);
+  border-radius: var(--provly-radius-provly-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.provly-badge--success {
+  background: var(--provly-role-provly-success-container);
+  color: var(--provly-role-provly-on-success-container);
+  border: 1px solid var(--provly-role-provly-on-success-container);
+}
+
+.provly-badge--warning {
+  background: var(--provly-role-provly-warning-container);
+  color: var(--provly-role-provly-on-warning-container);
+  border: 1px solid var(--provly-role-provly-on-warning-container);
+}
+
+.provly-badge--error {
+  background: var(--provly-role-provly-error-container);
+  color: var(--provly-role-provly-on-error-container);
+  border: 1px solid var(--provly-role-provly-on-error-container);
+}
+
+.provly-badge--neutral {
+  background: var(--provly-role-provly-neutral-container);
+  color: var(--provly-role-provly-on-neutral-container);
+  border: 1px solid var(--provly-role-provly-on-neutral-container);
+}
+
+/* --------------------------------------------------------------------------
+   Cards, Surfaces & Notices
+   -------------------------------------------------------------------------- */
+.provly-card {
+  background: var(--provly-role-provly-neutral-container);
+  border: 1px solid var(--provly-role-provly-on-neutral-container);
+  border-radius: var(--provly-radius-provly-large);
+  padding: var(--provly-spacing-provly-large-spacing);
+  box-shadow: var(--effect-provly-soft-shadow);
+}
+
+.provly-card--featured {
+  border-color: var(--provly-role-provly-primary);
+  box-shadow: var(--effect-provly-medium-shadow);
+}
+
+.provly-notice {
+  font: var(--typography-provly-body-medium);
+  padding: var(--provly-spacing-provly-base-spacing);
+  border-radius: var(--provly-radius-provly-medium);
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+
+.provly-notice--success {
+  background: var(--provly-role-provly-success-container);
+  color: var(--provly-role-provly-on-success-container);
+  border-color: var(--provly-role-provly-on-success-container);
+}
+
+.provly-notice--warning {
+  background: var(--provly-role-provly-warning-container);
+  color: var(--provly-role-provly-on-warning-container);
+  border-color: var(--provly-role-provly-on-warning-container);
+}
+
+.provly-notice--error {
+  background: var(--provly-role-provly-error-container);
+  color: var(--provly-role-provly-on-error-container);
+  border-color: var(--provly-role-provly-on-error-container);
+}
+
+.provly-notice--info {
+  background: var(--provly-role-provly-info-container);
+  color: var(--provly-role-provly-on-info-container);
+  border-color: var(--provly-role-provly-on-info-container);
+}
+
+/* --------------------------------------------------------------------------
+   Pricing Grid & Cards
+   -------------------------------------------------------------------------- */
+.provly-price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--provly-spacing-provly-large-spacing);
+  margin-top: var(--provly-spacing-provly-extra-large-spacing);
+}
+
+.provly-price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--provly-role-provly-neutral-container);
+  border: 1px solid var(--provly-role-provly-on-neutral-container);
+  border-radius: var(--provly-radius-provly-extra-large);
+  padding: var(--provly-spacing-provly-extra-large-spacing);
+  box-shadow: var(--effect-provly-soft-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.provly-price-card:hover {
+  box-shadow: var(--effect-provly-medium-shadow);
+}
+
+.provly-price-card--current {
+  border-color: var(--provly-role-provly-primary);
+  border-width: 2px;
+  box-shadow: var(--effect-provly-medium-shadow);
+}
+
+.provly-price-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--provly-spacing-provly-base-spacing);
+}
+
+.provly-price-card__name {
+  font: var(--typography-provly-title-medium);
+  color: var(--provly-role-provly-on-neutral-container);
+}
+
+.provly-price-card__price-wrapper {
+  margin-bottom: var(--provly-spacing-provly-base-spacing);
+}
+
+.provly-price-card__price {
+  font: var(--typography-provly-display-medium);
+  color: var(--provly-role-provly-on-neutral-container);
+  line-height: 1;
+}
+
+.provly-price-card__period {
+  font: var(--typography-provly-label-medium);
+  color: var(--provly-role-provly-neutral-variant);
+  margin-top: var(--provly-spacing-provly-extra-small-spacing);
+}
+
+.provly-price-card__description {
+  font: var(--typography-provly-body-medium);
+  color: var(--provly-role-provly-on-neutral-container);
+  opacity: 0.85;
+  margin-bottom: var(--provly-spacing-provly-large-spacing);
+  min-height: 42px;
+}
+
+.provly-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--provly-spacing-provly-small-spacing);
+  margin-bottom: var(--provly-spacing-provly-extra-large-spacing);
+  padding: 0;
+}
+
+.provly-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--provly-spacing-provly-small-spacing);
+  font: var(--typography-provly-body-medium);
+  color: var(--provly-role-provly-on-neutral-container);
+}
+
+.provly-feature::before {
+  content: "\2713";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--provly-radius-provly-full-pill);
+  background: var(--provly-role-provly-success-container);
+  color: var(--provly-role-provly-on-success-container);
+  font-size: 11px;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.provly-action-row {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--provly-spacing-provly-small-spacing);
+}
+
+/* --------------------------------------------------------------------------
+   Data Tables & Grids (Billing History)
+   -------------------------------------------------------------------------- */
+.provly-table-container {
+  overflow-x: auto;
+  border-radius: var(--provly-radius-provly-large);
+  border: 1px solid var(--provly-role-provly-on-neutral-container);
+  box-shadow: var(--effect-provly-soft-shadow);
+}
+
+.provly-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--typography-provly-body-medium);
+  background: var(--provly-role-provly-neutral-container);
+}
+
+.provly-table th,
+.provly-table td {
+  text-align: left;
+  padding: var(--provly-spacing-provly-base-spacing);
+  border-bottom: 1px solid var(--provly-role-provly-on-neutral-container);
+}
+
+.provly-table th {
+  font: var(--typography-provly-label-large);
+  background: var(--provly-role-provly-neutral);
+  color: var(--provly-role-provly-on-neutral);
+}
+
+.provly-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.provly-table tbody tr:hover {
+  background: var(--provly-role-provly-neutral-variant-container);
+}
+
+.provly-row {
+  display: flex;
+  gap: var(--provly-spacing-provly-base-spacing);
+}
+
+.provly-row--space {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.provly-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--provly-spacing-provly-base-spacing);
+  padding: var(--provly-spacing-provly-base-spacing) 0;
+}
+
+.provly-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--provly-spacing-provly-extra-small-spacing);
+}
+
+.provly-meta-label {
+  font: var(--typography-provly-label-medium);
+  color: var(--provly-role-provly-neutral-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.provly-meta-value {
+  font: var(--typography-provly-title-small);
+  color: var(--provly-role-provly-on-neutral-container);
+}
+
+/* --------------------------------------------------------------------------
+   Forms & Controls
+   -------------------------------------------------------------------------- */
+.provly-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--provly-spacing-provly-small-spacing);
+  margin-bottom: var(--provly-spacing-provly-base-spacing);
+}
+
+.provly-label {
+  font: var(--typography-provly-label-large);
+  color: var(--provly-role-provly-on-neutral-container);
+}
+
+.provly-textarea {
+  width: 100%;
+  font: var(--typography-provly-body-medium);
+  color: var(--provly-role-provly-on-warning-container);
+  background: var(--provly-role-provly-neutral-container);
+  border-radius: var(--provly-radius-provly-medium);
+  padding: var(--provly-spacing-provly-small-spacing) var(--provly-spacing-provly-base-spacing);
+  border: 1px solid var(--provly-role-provly-on-warning-container);
+  resize: vertical;
+}
+
+.provly-textarea:focus {
+  outline: 2px solid var(--provly-role-provly-primary);
+  outline-offset: 1px;
+}

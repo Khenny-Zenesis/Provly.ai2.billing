@@ -1,0 +1,106 @@
+// Prisma schema — Payment & Subscription slice (Assessment 2)
+// =====================================================================
+// R2.1  Money is stored as whole numbers in minor units (amountMinor), with
+//       currency stored alongside. No decimals, ever.
+// R2.2  Subscription = the CURRENT state only. PaymentLog = the full history.
+//       They answer different questions and must not be conflated.
+// R2.5  PaymentLog carries the provider reference so a webhook fired twice is
+//       recorded once (enforced by @@unique) and acted on once.
+// =====================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Minimal user model so the copied Assessment 1 auth has something to read and
+// so subscriptions can be owned by a real user. Reconcile field names with the
+// Assessment 1 schema when the auth files are copied in.
+model User {
+  id           String           @id @default(cuid())
+  email        String           @unique
+  name         String?
+  passwordHash String
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  subscriptions Subscription[]
+  paymentLogs   PaymentLog[]
+}
+
+// One paid plan, sold on exactly two intervals (monthly / yearly).
+// One row per user = the *present* status. History lives in PaymentLog.
+// A user with no Subscription row is on the free tier.
+model Subscription {
+  id          String             @id @default(cuid())
+  userId      String
+  user        User               @relation(fields: [userId], references: [id])
+  plan        String // single paid plan id, e.g. "pro"
+  interval    BillingInterval // what the user is currently billed on
+  nextInterval BillingInterval? // pending downgrade target, applied at period end
+  status      SubscriptionStatus
+
+  amountMinor Int // amount paid for the current interval, in minor units (kobo)
+  currency    String // e.g. "NGN" — stored alongside the amount (R2.1)
+
+  currentPeriodStart DateTime
+  currentPeriodEnd   DateTime
+
+  cancelReason String? // R2.8 — optional reason captured after cancellation
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  paymentLogs PaymentLog[]
+
+  @@unique([userId]) // one current subscription per user
+}
+
+// Every payment event gets its own row. This is the auditable history: for a
+// dispute we show this log. Status on Subscription is never the history.
+model PaymentLog {
+  id             String           @id @default(cuid())
+  subscriptionId String?
+  subscription   Subscription?    @relation(fields: [subscriptionId], references: [id])
+  userId         String?
+  user           User?            @relation(fields: [userId], references: [id])
+
+  eventType       PaymentEventType
+  provider        String          @default("flutterwave")
+  providerId      String // Flutterwave's own transaction id (idempotency key, R2.5)
+  providerTxRef   String // the tx_ref we generated at checkout
+  amountMinor     Int
+  currency        String
+  detail          String? // outcome / message (e.g. declined, verified)
+  interval        BillingInterval? // the interval this event related to (for grant logic)
+  plan            String? // the plan this event related to (single paid plan)
+
+  createdAt DateTime @default(now())
+
+  // R2.5 — the same webhook (same provider transaction, same event type) can
+  // only ever produce one log row. A duplicate insert fails; the handler must
+  // check existence and short-circuit before acting. See webhook/route.ts.
+  @@unique([eventType, providerId])
+}
+
+enum BillingInterval {
+  MONTHLY
+  YEARLY
+}
+
+enum SubscriptionStatus {
+  ACTIVE // paid, currently has access
+  CANCEL_PENDING // cancelled; access retained until currentPeriodEnd (R2.7)
+  EXPIRED // period ended, no access
+}
+
+enum PaymentEventType {
+  INITIATION // checkout initiated with Flutterwave
+  VERIFICATION // server-side verification after the return URL
+  FULFILMENT // access granted after provider confirms payment
+  FAILURE // declined / verification mismatch / etc.
+}
